@@ -7,13 +7,25 @@
       body{
         background-color: gray;
         margin: 0;
+        font-family: 'Ma Shan Zheng', cursive;
+        font-size: 2em;
       }
       input{
+        box-sizing: border-box;
+        height: 50px;
         position: fixed;
         width: 100%;
         bottom: 0;
       }
+      div{
+        position: fixed;
+        height: calc(100% - 50px);
+        top: 0;
+        overflow-y: scroll;
+        width: 100%;
+      }
       </style>
+      <link href="https://fonts.googleapis.com/css?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
   </head>
   <body>
     <input placeholder="Type Here">
@@ -41,7 +53,7 @@
 
       socket.on('mes',m=>{
         obj('div').innerHTML += m + '<br>';
-        document.scrollTop = document.body.scrollHeight;
+         obj('div').scrollTo(0,obj('div').scrollHeight);
       })
 
     </script>
