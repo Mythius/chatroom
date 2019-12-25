@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src=/socket.io/socket.io.js></script>
+    <title>MChat</title>
+    <style>
+      body{
+        background-color: gray;
+        margin: 0;
+      }
+      input{
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+      }
+      </style>
+  </head>
+  <body>
+    <input placeholder="Type Here">
+    <div>
+    </div>
+    <script>
+      var socket = io();
+
+      socket.emit('name',prompt('Enter Name:'));
+
+      function obj(id){
+        return document.querySelector(id);
+      }
+
+      Node.prototype.on = function(a,b,c){
+        this.addEventListener(a,b,c);
+      }
+
+      document.on('keydown',function(e){
+        if(e.keyCode == 13){
+          if(obj('input').value) socket.emit('msg',obj('input').value);
+          obj('input').value = '';
+        }
+      })
+
+      socket.on('mes',m=>{
+        obj('div').innerHTML += m + '<br>';
+        document.scrollTop = document.body.scrollHeight;
+      })
+
+    </script>
+  </body>
+</html>
